@@ -1,0 +1,45 @@
+﻿--1
+--Select e.FirstName, e.LastName, e.IsSupervisor, d.Name as DepartmentName 
+--from Employee e left join Department d on d.Id = e.DepartmentId 
+--Order By d.Name, e.LastName, e.FirstName 
+--2
+--Select * from Department d
+--Order By d.Budget DESC
+--3
+--Select d.Name, e.FirstName, e.LastName 
+--from Department d left join Employee e 
+--on e.IsSupervisor = 1 and e.DepartmentId = d.Id
+--4
+--Select d.Name, Count(e.DepartmentId) as TotalEmployees 
+--from Department d left join Employee e on d.id = e.DepartmentId 
+--Group by d.Name
+--5
+--Select * from Department
+--Update Department set Budget = Budget*1.20
+--Select * from Department
+--6
+--Select e.FirstName, e.LastName from Employee e left join EmployeeTraining et on et.EmployeeId = e.id where et.EmployeeId IS NULL
+--7
+--Select e.FirstName, e.LastName, Count(et.TrainingProgramId) as NumberOfTrainingPrograms 
+--from Employee e left join EmployeeTraining et on et.EmployeeId = e.id 
+--where et.EmployeeId is not null 
+--Group By e.LastName, e.FirstName
+--8
+--Select tp.Name, Count(et.EmployeeId) as NumberOfEmployeesEnrolled
+--from TrainingProgram tp left join EmployeeTraining et on tp.Id = et.TrainingProgramId 
+--where et.EmployeeId is not null
+--Group By tp.Name
+--9
+--Select tp.Name, tp.MaxAttendees, Count(et.EmployeeId) as NumberEnrolled 
+--from TrainingProgram tp left join EmployeeTraining et on et.TrainingProgramId = tp.Id 
+--Group By tp.Name, tp.MaxAttendees 
+--having Count(et.EmployeeId) = tp.MaxAttendees 
+--10
+--Select * from TrainingProgram tp where tp.StartDate > '2019-11-8' Order By tp.StartDate
+--11
+--Select * from Employee e left join EmployeeTraining et on et.EmployeeId = e.id left join TrainingProgram tp on tp.Id = et.TrainingProgramId
+--INSERT INTO EmployeeTraining (EmployeeId, TrainingProgramId) VALUES (2, 3);
+--INSERT INTO EmployeeTraining (EmployeeId, TrainingProgramId) VALUES (2,1);
+--INSERT INTO EmployeeTraining (EmployeeId, TrainingProgramId) VALUES (2, 8);
+--12
+
