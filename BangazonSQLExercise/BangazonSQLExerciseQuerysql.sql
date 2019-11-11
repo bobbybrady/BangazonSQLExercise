@@ -30,10 +30,10 @@
 --where et.EmployeeId is not null
 --Group By tp.Name
 --9
---Select tp.Name, tp.MaxAttendees, Count(et.EmployeeId) as NumberEnrolled 
---from TrainingProgram tp left join EmployeeTraining et on et.TrainingProgramId = tp.Id 
---Group By tp.Name, tp.MaxAttendees 
---having Count(et.EmployeeId) = tp.MaxAttendees 
+--select tp.name, tp.maxattendees, count(et.employeeid) as numberenrolled 
+--from trainingprogram tp left join employeetraining et on et.trainingprogramid = tp.id 
+--group by tp.name, tp.maxattendees 
+--having count(et.employeeid) = tp.maxattendees 
 --10
 --Select * from TrainingProgram tp where tp.StartDate > '2019-11-8' Order By tp.StartDate
 --11
@@ -42,4 +42,39 @@
 --INSERT INTO EmployeeTraining (EmployeeId, TrainingProgramId) VALUES (2,1);
 --INSERT INTO EmployeeTraining (EmployeeId, TrainingProgramId) VALUES (2, 8);
 --12
+--Select top(3)  tp.Id, Count(et.EmployeeId) as NumberEnrolled 
+--from TrainingProgram tp inner join EmployeeTraining et on et.TrainingProgramId = tp.Id 
+--Group By tp.id Order By NumberEnrolled DESC
+--Select * from TrainingProgram tp left join EmployeeTraining et on et.TrainingProgramId = tp.Id where et.id is not null
+--13
+--Select top(3) tp.Name, Count(et.EmployeeId) as NumberEnrolled 
+--from TrainingProgram tp inner join EmployeeTraining et on et.TrainingProgramId = tp.Id 
+--Group By tp.Name Order By NumberEnrolled DESC
+--14
+--Select e.FirstName, e.LastName from Employee e left join ComputerEmployee ce on ce.EmployeeId = e.Id where ce.EmployeeId is null
+--15
+--Select ISNULL(c.Manufacturer + ' ' + c.Make, 'N/A') as ComputerInfo, e.FirstName, e.LastName 
+--from Employee e left join ComputerEmployee ce on ce.EmployeeId = e.Id left join Computer c on ce.ComputerId = c.Id 
+--Group By e.LastName, e.FirstName, c.Make, c.Manufacturer
+--16 
+--Select * from Computer c where c.PurchaseDate < '2019-07-01' and DecomissionDate is not null
+--17
+--Select e.FirstName, e.LastName, Count(ce.EmployeeId) as ComputerCount
+--from Employee e left join ComputerEmployee ce 
+--on e.Id = ce.EmployeeId 
+--Group by e.FirstName, e.LastName
+--18
+--Select pt.Name, COUNT(pt.CustomerId) as CustomerCount from PaymentType pt Group By pt.Name
+--19
+--Select top(10) p.Title, p.Price, c.FirstName, c.LastName 
+--from Product p left join Customer c on c.Id = p.CustomerId 
+--Order By p.Price Desc
+--20
+--Select top(10) p.Title, Count(op.ProductId) as ProductCount 
+--from [OrderProduct] op left join Product p on p.Id = op.ProductId 
+--Group by p.Title Order By ProductCount Desc
+--21
+Select Top(1) c.FirstName, c.LastName, Count(o.CustomerId) as PurchaseCount 
+from [Order] o left join Customer c on c.Id = o.CustomerId 
+Group by c.FirstName, c.LastName Order By PurchaseCount Desc
 
